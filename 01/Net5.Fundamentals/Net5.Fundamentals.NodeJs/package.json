@@ -1,0 +1,9 @@
+{
+  "name": "net5.fundamentals.node-js",
+  "version": "0.0.0",
+  "description": "Net5.Fundamentals.NodeJs",
+  "main": "server.js",
+  "author": {
+    "name": ""
+  }
+}
