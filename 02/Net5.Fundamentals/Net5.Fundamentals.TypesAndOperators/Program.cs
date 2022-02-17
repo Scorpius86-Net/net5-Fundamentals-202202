@@ -136,6 +136,17 @@ namespace Net5.Fundamentals.TypesAndOperators
                 Console.WriteLine(num);
                 Console.WriteLine(num);
             });
+
+            Employee employee = new Employee();
+            employee.Name = "Erick";
+            employee.Size = 168;
+
+            WeatherObservation weatherObservation = new WeatherObservation()
+            {
+                TemperatureInCelcius = 15_2
+            };
+
+            
         }
 
         static void NumPrint(int num)
