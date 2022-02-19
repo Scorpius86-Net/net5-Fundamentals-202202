@@ -36,6 +36,12 @@ namespace Net5.Fundamentals.ListAndThread
 
                 switch (opt)
                 {
+                    case "1":
+                        listAndThread.ArraySample();
+                        break;
+                    case "99":
+                        exit = true;
+                        break;
                     default:
                         break;
                 }
