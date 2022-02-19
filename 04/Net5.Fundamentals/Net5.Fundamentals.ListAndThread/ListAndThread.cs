@@ -197,7 +197,7 @@ namespace Net5.Fundamentals.ListAndThread
             {
                 Console.WriteLine($"Elementos en el Stack : {people.Count}");
                 Console.WriteLine($"Extraer el elemento del Stack : {people.Peek().Name}");
-                Console.WriteLine($"Eliminar el elemento del Stack : {people.Pop()}");
+                Console.WriteLine($"Eliminar el elemento del Stack : {people.Pop().Name}");
             }
         }
         public void QueueSample()
@@ -218,7 +218,7 @@ namespace Net5.Fundamentals.ListAndThread
             {
                 Console.WriteLine($"Elementos en el Stack : {people.Count}");
                 Console.WriteLine($"Extraer el elemento del Stack : {people.Peek().Name}");
-                Console.WriteLine($"Eliminar el elemento del Stack : {people.Dequeue()}");
+                Console.WriteLine($"Eliminar el elemento del Stack : {people.Dequeue().Name}");
             }
         }
         public void TupleSample()

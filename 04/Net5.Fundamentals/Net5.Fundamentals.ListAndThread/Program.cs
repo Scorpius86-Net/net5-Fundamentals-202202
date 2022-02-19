@@ -39,6 +39,24 @@ namespace Net5.Fundamentals.ListAndThread
                     case "1":
                         listAndThread.ArraySample();
                         break;
+                    case "2":
+                        listAndThread.ListSample();
+                        break;
+                    case "3":
+                        listAndThread.DictionarySample();
+                        break;
+                    case "4":
+                        listAndThread.SortedListSample();
+                        break;
+                    case "5":
+                        listAndThread.HashTableSample();
+                        break;
+                    case "6":
+                        listAndThread.StackSample();
+                        break;
+                    case "7":
+                        listAndThread.QueueSample();
+                        break;
                     case "99":
                         exit = true;
                         break;
