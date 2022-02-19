@@ -60,6 +60,27 @@ namespace Net5.Fundamentals.ControlStructure
                     case "7":
                         controlStructureImplement.SwitchStructure();
                         break;
+                    case "8":
+                        controlStructureImplement.BreakCommand();
+                        break;
+                    case "9":
+                        controlStructureImplement.ContinueCommandInFor();
+                        break;
+                    case "10":
+                        controlStructureImplement.ContinueCommandInWhile();
+                        break;
+                    case "11":
+                        controlStructureImplement.GoToCommandInSwitch();
+                        break;
+                    case "12":
+                        controlStructureImplement.ForEachStructure();                        
+                        break;
+                    case "13":
+                        controlStructureImplement.TryCatchStructure();                        
+                        break;
+                    case "14":
+                        controlStructureImplement.TryCatchFinallyStructure();
+                        break;
                     case "99":
                         exit = true;
                         break;

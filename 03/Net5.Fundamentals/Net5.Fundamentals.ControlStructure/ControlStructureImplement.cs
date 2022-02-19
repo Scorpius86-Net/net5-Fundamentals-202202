@@ -8,6 +8,7 @@ namespace Net5.Fundamentals.ControlStructure
 {
     public class ControlStructureImplement
     {
+        public List<Person> People { get; set; }
         public void IfStructure()
         {
             int precio = 300;
@@ -291,6 +292,8 @@ namespace Net5.Fundamentals.ControlStructure
                     ApellidoMaterno = $"Sur Name- {i}",
                 });
             }
+
+            People = people;
 
             foreach (Person person in people)
             {
