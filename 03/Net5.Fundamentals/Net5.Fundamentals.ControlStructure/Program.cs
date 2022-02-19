@@ -22,6 +22,13 @@ namespace Net5.Fundamentals.ControlStructure
                 Console.WriteLine(" 5 - While Structure");
                 Console.WriteLine(" 6 - Do While Structure");
                 Console.WriteLine(" 7 - Switch Structure");
+                Console.WriteLine(" 8 - Break Command");
+                Console.WriteLine(" 9 - Continue Command in For");
+                Console.WriteLine("10 - Continue Command in While");
+                Console.WriteLine("11 - GoTo Command in Switch");
+                Console.WriteLine("12 - ForEach Structure");
+                Console.WriteLine("13 - Try Catch Structure");
+                Console.WriteLine("14 - Try Catch Finally Structure");
                 Console.WriteLine("99 - Exit");
                 Console.WriteLine("");
                 Console.Write("Elija una opción : ");
