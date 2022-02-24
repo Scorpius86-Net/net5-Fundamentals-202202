@@ -57,6 +57,24 @@ namespace Net5.Fundamentals.ListAndThread
                     case "7":
                         listAndThread.QueueSample();
                         break;
+                    case "8":
+                        listAndThread.TupleSample();
+                        break;
+                    case "9":
+                        listAndThread.ValueTupleSample();
+                        break;
+                    case "10":
+                        listAndThread.ThreadSample();
+                        break;
+                    case "11":
+                        listAndThread.TaskSample();
+                        break;
+                    case "12":
+                        listAndThread.StreamReaderSample();
+                        break;
+                    case "13":
+                        listAndThread.StreamWriterSample();
+                        break;
                     case "99":
                         exit = true;
                         break;
