@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Net5.FunctionalProgramming.Samples": {
+      "commandName": "Project",
+      "commandLineArgs": "Hola"
+    }
+  }
+}
