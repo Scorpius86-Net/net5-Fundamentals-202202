@@ -3,4 +3,36 @@
 @{
 }
 
-<p>Customer - Index</p>
+<h1>Index</h1>
+
+<table class="table table-sm table-striped table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Customers[0].CustomerId)</th>
+            <th>@Html.DisplayNameFor(model => model.Customers[0].FirstName)</th>
+            <th>@Html.DisplayNameFor(model => model.Customers[0].LastName)</th>
+            <th>@Html.DisplayNameFor(model => model.Customers[0].Phone)</th>
+            <th>@Html.DisplayNameFor(model => model.Customers[0].Email)</th>
+            <th>@Html.DisplayNameFor(model => model.Customers[0].Street)</th>
+            <th>@Html.DisplayNameFor(model => model.Customers[0].City)</th>
+            <th>@Html.DisplayNameFor(model => model.Customers[0].State)</th>
+            <th>@Html.DisplayNameFor(model => model.Customers[0].ZipCode)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var customer in Model.Customers)
+        {
+        <tr>
+            <td>@Html.DisplayFor(modelCustomer => customer.CustomerId)</td>
+            <td>@Html.DisplayFor(modelCustomer => customer.FirstName)</td>
+            <td>@Html.DisplayFor(modelCustomer => customer.LastName)</td>
+            <td>@Html.DisplayFor(modelCustomer => customer.Phone)</td>
+            <td>@Html.DisplayFor(modelCustomer => customer.Email)</td>
+            <td>@Html.DisplayFor(modelCustomer => customer.Street)</td>
+            <td>@Html.DisplayFor(modelCustomer => customer.City)</td>
+            <td>@Html.DisplayFor(modelCustomer => customer.State)</td>
+            <td>@Html.DisplayFor(modelCustomer => customer.ZipCode)</td>            
+        </tr>
+        }
+    </tbody>
+</table>
