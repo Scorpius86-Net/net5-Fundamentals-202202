@@ -4,6 +4,7 @@
 }
 
 <h1>Index</h1>
+<p><a asp-page="./Create">Create new</a></p>
 
 <table class="table table-sm table-striped table-hover">
     <thead class="thead-dark">
@@ -17,6 +18,7 @@
             <th>@Html.DisplayNameFor(model => model.Customers[0].City)</th>
             <th>@Html.DisplayNameFor(model => model.Customers[0].State)</th>
             <th>@Html.DisplayNameFor(model => model.Customers[0].ZipCode)</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -31,7 +33,12 @@
             <td>@Html.DisplayFor(modelCustomer => customer.Street)</td>
             <td>@Html.DisplayFor(modelCustomer => customer.City)</td>
             <td>@Html.DisplayFor(modelCustomer => customer.State)</td>
-            <td>@Html.DisplayFor(modelCustomer => customer.ZipCode)</td>            
+            <td>@Html.DisplayFor(modelCustomer => customer.ZipCode)</td>
+            <td>
+                <a asp-page="./Detail" asp-route-id="@customer.CustomerId">Detail</a> |
+                <a asp-page="./Edit" asp-route-id="@customer.CustomerId">Edit</a> |
+                <a asp-page="./Delete" asp-route-id="@customer.CustomerId">Delete</a>
+            </td>
         </tr>
         }
     </tbody>

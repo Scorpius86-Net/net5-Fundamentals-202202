@@ -23,16 +23,144 @@ namespace Net5.Fundamentals.AspNet.Data.Helpers
             _connectionString = _configuration.GetConnectionString(_connectionStringName);
         }
 
-        public List<T> GetAll<T>(string sql,CommandType commandType = CommandType.StoredProcedure)
+        public int Execute(string sql, CommandType commandType = CommandType.StoredProcedure)
         {
-            List<T> entities = new List<T>();            
-
+            int result;
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                entities = db.Query<T>(sql, commandType).ToList();
-            }
+                try
+                {
+                    if (db.State == ConnectionState.Closed)
+                    {
+                        db.Open();
+                    }
 
-            return entities;
+                    using (IDbTransaction tran = db.BeginTransaction())
+                    {
+                        try
+                        {
+                            result = db.Execute(sql, commandType: commandType, transaction: tran);
+                            tran.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            tran.Rollback();
+                            throw ex;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    if (db.State == ConnectionState.Open)
+                    {
+                        db.Close();
+                    }
+                }
+
+                return result;
+            }
+        }
+
+        public T Get<T>(string sql, CommandType commandType = CommandType.StoredProcedure)
+        {            
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                return db.Query<T>(sql, commandType).FirstOrDefault();
+            }
+        }
+
+        public List<T> GetAll<T>(string sql,CommandType commandType = CommandType.StoredProcedure)
+        {
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                return db.Query<T>(sql, commandType).ToList();
+            }            
+        }
+        public T Insert<T>(string sql, CommandType commandType = CommandType.StoredProcedure)
+        {
+            T result;
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    if (db.State == ConnectionState.Closed)
+                    {
+                        db.Open();
+                    }
+
+                    using (IDbTransaction tran = db.BeginTransaction())
+                    {
+                        try
+                        {
+                            result = db.Query<T>(sql, commandType: commandType, transaction: tran).FirstOrDefault();
+                            tran.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            tran.Rollback();
+                            throw ex;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    if (db.State == ConnectionState.Open)
+                    {
+                        db.Close();
+                    }
+                }
+
+                return result;
+            }
+        }
+        public T Update<T>(string sql, CommandType commandType = CommandType.StoredProcedure)
+        {
+            T result;
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    if (db.State == ConnectionState.Closed)
+                    {
+                        db.Open();
+                    }
+
+                    using (IDbTransaction tran = db.BeginTransaction())
+                    {
+                        try
+                        {
+                            result = db.Query<T>(sql, commandType: commandType, transaction: tran).FirstOrDefault();
+                            tran.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            tran.Rollback();
+                            throw ex;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    if (db.State == ConnectionState.Open)
+                    {
+                        db.Close();
+                    }
+                }
+
+                return result;
+            }
         }
     }
 }
