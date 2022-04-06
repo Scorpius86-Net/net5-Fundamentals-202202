@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,10 @@ namespace Net5.Fundamentals.Taller.Parallel.Client.Data.Helper
     {
         public List<Badge> ListBadges()
         {
+
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             Console.WriteLine("ListBadges Start");
 
             List<Badge> badges = new List<Badge>();
@@ -52,7 +57,10 @@ namespace Net5.Fundamentals.Taller.Parallel.Client.Data.Helper
                     conn.Close();
                 }
 
-                Console.WriteLine("ListBadges End");
+                stopwatch.Stop();
+                TimeSpan ts = stopwatch.Elapsed;
+                string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+                Console.WriteLine($"ListBadges, elapsed time : {elapsedTime}");
 
                 return badges;
             }
