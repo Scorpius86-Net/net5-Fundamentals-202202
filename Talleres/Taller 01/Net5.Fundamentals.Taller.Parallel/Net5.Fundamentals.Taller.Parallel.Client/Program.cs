@@ -32,6 +32,8 @@ namespace Net5.Fundamentals.Taller.Parallel.Client
                         Console.WriteLine($"ListBadges, Count : {badges.Count()}");
                         break;
                     case "2":
+                        badges = database.ListBadgesParallel();
+                        Console.WriteLine($"ListBadges, Count : {badges.Count()}");
                         break;
                     case "99":
                         exit = true;
