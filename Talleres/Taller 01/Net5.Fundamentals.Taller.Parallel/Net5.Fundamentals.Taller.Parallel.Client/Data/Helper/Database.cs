@@ -75,7 +75,7 @@ namespace Net5.Fundamentals.Taller.Parallel.Client.Data.Helper
 
             List<Badge> badges = new List<Badge>();
 
-            int taskCount = 30;
+            int taskCount = 16;
             Task<List<Badge>>[] tasks = new Task<List<Badge>>[taskCount];
             int minId = 82946;
             int maxId = 29392944;
