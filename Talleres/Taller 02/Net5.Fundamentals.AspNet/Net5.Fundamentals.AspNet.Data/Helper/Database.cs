@@ -117,5 +117,45 @@ namespace Net5.Fundamentals.AspNet.Data.Helper
 
             return result;
         }
+        public int Execute(string sql, DynamicParameters param, CommandType commandType = CommandType.StoredProcedure)
+        {
+            int result;
+            using (IDbConnection db = new SqlConnection(_config.GetConnectionString(ConnectionString)))
+            {
+                try
+                {
+                    if (db.State == ConnectionState.Closed)
+                    {
+                        db.Open();
+                    }
+                    using (IDbTransaction tran = db.BeginTransaction())
+                    {
+                        try
+                        {
+                            result = db.Execute(sql, commandType: commandType, transaction: tran);
+                            tran.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            tran.Rollback();
+                            throw ex;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    if (db.State == ConnectionState.Open)
+                    {
+                        db.Close();
+                    }
+                }
+            }
+
+            return result;
+        }
     }
 }

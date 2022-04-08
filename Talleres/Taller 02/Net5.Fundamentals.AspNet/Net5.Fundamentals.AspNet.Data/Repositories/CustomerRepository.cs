@@ -103,11 +103,24 @@ namespace Net5.Fundamentals.AspNet.Data.Repositories
                        ,'{customer.City}'
                        ,'{customer.State}'
                        ,'{customer.ZipCode}'
+                       )
             ";
 
             customer = _database.Insert<Customer>(query, null, CommandType.Text);
 
             return customer;
+        }
+
+        public int Remove(int customerId)
+        {        
+            string query = @$"
+                DELETE FROM [sales].[customers]
+                WHERE [customer_id] = {customerId}                
+            ";
+
+            int result = _database.Execute(query, null, CommandType.Text);
+
+            return result;
         }
 
         public bool Exists(int customerId)

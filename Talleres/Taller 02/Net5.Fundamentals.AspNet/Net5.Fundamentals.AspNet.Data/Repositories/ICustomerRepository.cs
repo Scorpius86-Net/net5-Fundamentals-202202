@@ -9,6 +9,7 @@ namespace Net5.Fundamentals.AspNet.Data.Repositories
         Customer Get(int customerId);
         Customer Insert(Customer customer);
         List<Customer> List();
+        int Remove(int customerId);
         Customer Update(Customer customer);
     }
 }
