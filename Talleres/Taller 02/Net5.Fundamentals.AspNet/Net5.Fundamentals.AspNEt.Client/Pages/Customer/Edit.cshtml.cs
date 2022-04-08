@@ -10,6 +10,7 @@ namespace Net5.Fundamentals.AspNet.Client.Pages.Customer
     public class EditModel : PageModel
     {
         private readonly ICustomerRepository _customerRepository;
+        [BindProperty]
         public Customer Customer { get; set; }
 
         public EditModel(ICustomerRepository customerRepository)

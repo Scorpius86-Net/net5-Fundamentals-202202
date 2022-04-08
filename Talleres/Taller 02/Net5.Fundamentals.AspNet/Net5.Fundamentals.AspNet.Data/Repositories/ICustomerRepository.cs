@@ -7,6 +7,7 @@ namespace Net5.Fundamentals.AspNet.Data.Repositories
     {
         bool Exists(int customerId);
         Customer Get(int customerId);
+        Customer Insert(Customer customer);
         List<Customer> List();
         Customer Update(Customer customer);
     }
