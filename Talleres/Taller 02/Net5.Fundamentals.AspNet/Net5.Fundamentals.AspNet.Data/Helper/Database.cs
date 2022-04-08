@@ -14,37 +14,28 @@ namespace Net5.Fundamentals.AspNet.Data.Helper
     public class Database : IDatabase
     {
         private readonly IConfiguration _config;
-        private string ConnectionString = "BikesStoreConnection";
+        private string ConnectionString = "BikeStoresConnection";
 
         public Database(IConfiguration config)
         {
             _config = config;
         }
 
-        public List<Customer> GetAll()
+        public T Get<T>(string sql, DynamicParameters param, CommandType commandType = CommandType.StoredProcedure)
         {
-            List<Customer> customers = new List<Customer>();
-
-            string sql = @"
-                SELECT [customer_id] CustomerId
-                    ,[first_name] FirstName
-                    ,[last_name] LastName
-                    ,[phone] Phone
-                    ,[email] Email
-                    ,[street] Street
-                    ,[city] City
-                    ,[state] [State]
-                    ,[zip_code] ZipCode
-                FROM [sales].[customers]
-                ORDER BY [customer_id]
-            ";
-
             using (IDbConnection db = new SqlConnection(_config.GetConnectionString(ConnectionString)))
             {
-                customers = db.Query<Customer>(sql, CommandType.Text).ToList();
+                return db.Query<T>(sql, commandType: commandType).FirstOrDefault();
             }
+        }
 
-            return customers;
+        public List<T> GetAll<T>(string sql,DynamicParameters param,CommandType commandType = CommandType.StoredProcedure)
+        {
+            
+            using (IDbConnection db = new SqlConnection(_config.GetConnectionString(ConnectionString)))
+            {
+                return db.Query<T>(sql, commandType: commandType).ToList();
+            }
         }
     }
 }

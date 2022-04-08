@@ -1,10 +1,13 @@
-﻿using Net5.Fundamentals.AspNet.Data.Entities;
+﻿using Dapper;
+using Net5.Fundamentals.AspNet.Data.Entities;
 using System.Collections.Generic;
+using System.Data;
 
 namespace Net5.Fundamentals.AspNet.Data.Helper
 {
     public interface IDatabase
     {
-        List<Customer> GetAll();
+        T Get<T>(string sql, DynamicParameters param, CommandType commandType = CommandType.StoredProcedure);
+        List<T> GetAll<T>(string sql, DynamicParameters param, CommandType commandType = CommandType.StoredProcedure);
     }
 }
