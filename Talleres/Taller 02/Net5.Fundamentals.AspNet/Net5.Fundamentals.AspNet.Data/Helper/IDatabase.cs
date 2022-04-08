@@ -9,5 +9,6 @@ namespace Net5.Fundamentals.AspNet.Data.Helper
     {
         T Get<T>(string sql, DynamicParameters param, CommandType commandType = CommandType.StoredProcedure);
         List<T> GetAll<T>(string sql, DynamicParameters param, CommandType commandType = CommandType.StoredProcedure);
+        T Update<T>(string sql, DynamicParameters param, CommandType commandType = CommandType.StoredProcedure);
     }
 }

@@ -5,12 +5,14 @@ using Net5.Fundamentals.AspNet.Data.Repositories;
 namespace Net5.Fundamentals.AspNet.Client.Pages.Customer
 {
     using Net5.Fundamentals.AspNet.Data.Entities;
-    public class DetailModel : PageModel
+    using System;
+
+    public class EditModel : PageModel
     {
         private readonly ICustomerRepository _customerRepository;
         public Customer Customer { get; set; }
 
-        public DetailModel(ICustomerRepository customerRepository)
+        public EditModel(ICustomerRepository customerRepository)
         {
             _customerRepository = customerRepository;
         }
@@ -30,6 +32,31 @@ namespace Net5.Fundamentals.AspNet.Client.Pages.Customer
             }
 
             return Page();
+        }
+        public IActionResult OnPost()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            try
+            {
+                Customer = _customerRepository.Update(Customer);
+            }
+            catch (Exception)
+            {
+                if (_customerRepository.Exists(Customer.CustomerId))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return RedirectToPage("./Index");
         }
     }
 }

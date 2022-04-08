@@ -61,5 +61,41 @@ namespace Net5.Fundamentals.AspNet.Data.Repositories
 
             return customer;
         }
+
+        public Customer Update(Customer customer)
+        {            
+            string query = @$"
+                UPDATE [sales].[customers]
+                SET [first_name] = {customer.FirstName}
+                    ,[last_name] = {customer.LastName}
+                    ,[phone] = {customer.Phone}
+                    ,[email] = {customer.Email}
+                    ,[street] = {customer.Street}
+                    ,[city] = {customer.City}
+                    ,[state] = {customer.State}
+                    ,[zip_code] = {customer.ZipCode}
+                WHERE [customer_id] = {customer.CustomerId}
+            ";
+
+            customer = _database.Update<Customer>(query, null, CommandType.Text);
+
+            return customer;
+        }
+
+        public bool Exists(int customerId)
+        {
+            bool exists = false;
+            string query = @$"
+                SELECT 
+                    TOP 1
+                    COUNT(1)
+                FROM [sales].[customers]
+                WHERE [customer_id] = {customerId}                
+            ";
+
+            exists = _database.Get<int>(query, null, CommandType.Text) > 0;
+
+            return exists;
+        }
     }
 }
